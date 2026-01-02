@@ -1,0 +1,42 @@
+# 🔧 FlightOnTime – Backend (Spring Boot)
+
+Este módulo corresponde al **backend del proyecto FlightOnTime**, desarrollado en **Java con Spring Boot**.
+
+Su responsabilidad principal es exponer una **API REST** que reciba información de un vuelo y devuelva una **predicción de puntualidad** junto con su probabilidad asociada.
+
+---
+
+##  Responsabilidades del Backend
+
+- Exponer el endpoint `POST /predict`
+- Validar los datos de entrada del vuelo
+- Transformar los datos (fecha → hora y día de la semana)
+- Comunicarse con el microservicio de Machine Learning
+- Devolver respuestas claras y estandarizadas en formato JSON
+
+---
+
+##  Endpoint Principal
+
+### POST `/predict`
+
+### Entrada (JSON)
+```json
+{
+  "aerolinea": "AZ",
+  "origen": "GIG",
+  "destino": "GRU",
+  "fecha_partida": "2025-11-10T14:30:00",
+  "distancia_km": 350
+}
+{
+  "prevision": "Retrasado",
+  "probabilidad": 0.78
+}
+Cliente (Postman / Frontend)
+        |
+        v
+Spring Boot API
+        |
+        v
+Microservicio ML (FastAPI - Python)
